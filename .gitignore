@@ -1,0 +1,4 @@
+# ignore large dataframes and your directory
+*.pkl
+*.csv
+/data

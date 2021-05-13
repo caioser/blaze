@@ -1,0 +1,45 @@
+bloco bitcoin citado na blaze:
+https://www.blockchain.com/btc/block/570132
+corresponde a esse hash:
+00000000000000000029519374cde7aec54985f1caf22d946f5841d65b21024f
+
+hash citada na blaze
+0000000000000000000415ebb64b0d51ccee0bb55826e43846e5bea777d91966
+corresponde a esse bloco:
+https://www.blockchain.com/btc/block/570128
+
+
+
+
+
+ao acessar a página:
+https://blaze.com/pt/games/crash
+console.log mostra isso:
+[Blaze.com] Client version: 396d4451, Server version: a4c4519a
+
+
+
+
+A seed final/terminal desta cadeia é
+492bd10144a3525e2745718fe4d25e08affbea483872d8e8b86191b20ce0a7a8
+fator: 1.29
+
+SE esta é uma extremidade da lista E diz que há 10 milhoes de interações
+  obter as 10 milhões de linhas
+    Factor,Seed,HMAC
+  selecionar uma seed atual e procurar dentro das 10 milhoes obtidas
+Não deu certo 2021-05-12_23:31:27
+
+
+
+
+colocando a hash que corresponde ao bloco BTC 570128:
+0000000000000000000415ebb64b0d51ccee0bb55826e43846e5bea777d91966
+gera o seguinte HMAC:
+a9888e01cb6d81cbed63161e9acfa6304ecd2ed8c48c6b0a18a83d741aabd5b4
+com o fator:
+2.94
+
+2021-05-13_11:47:14
+encontrado padrão nas 2 e 4 primeiras letras da hash HMAC listados por pontos de crash
+
