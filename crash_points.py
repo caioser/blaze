@@ -136,16 +136,16 @@ def factors_stats(data):
   
   for x in range(len(stats)):
     resume += f"""\
-    {intervals[x][0]:.2f} < x < {intervals[x][1]:.2f}  perc: {format((stats[x]/(len(data))*100),".7f")}%,  quant: {format(stats[x], ",")}
-    """
+{intervals[x][0]:.2f} < x < {intervals[x][1]:.2f}  perc: {format((stats[x]/(len(data))*100),".7f")}%,  quant: {format(stats[x], ",")}
+"""
     # print(text)
 
 
   clock_fin = datetime.now()
   duration = (clock_fin - clock_ini).total_seconds()
   text = f"""\
-  END {clock_fin.isoformat("_")}
-  {format(len(data), ",")} itens em {duration} segundos"""
+END {clock_fin.isoformat("_")}
+{format(len(data), ",")} itens em {duration} segundos"""
   print(text)
 
 
@@ -153,7 +153,7 @@ def factors_stats(data):
 
 
 
-df = pd.read_pickle("data.pkl")
+df = pd.read_pickle("data/data.pkl")
 spoints = df.points
 
 stats = factors_stats(spoints)

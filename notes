@@ -67,3 +67,12 @@ COMEÇAR A JOGAR, FAZER dinheiro:
       3.01 a 3.20
     dream crashes
       3.21 a +0.19
+
+
+DURAÇÃO DOS CRASHES DE ACORDO COM O FATOR:
+  é um gráfico exponencial
+    base aproximadamente = 1.0605404816140187
+      na formula: base**segundos = fator
+        descobrir segundos: log fator base = segundos
+          python3: math.log(fator, base) >>> segundos(float)
+          RESULTADO OK, mas pode haver variação de 200ms
