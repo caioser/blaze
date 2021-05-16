@@ -76,3 +76,94 @@ DURAÇÃO DOS CRASHES DE ACORDO COM O FATOR:
         descobrir segundos: log fator base = segundos
           python3: math.log(fator, base) >>> segundos(float)
           RESULTADO OK, mas pode haver variação de 200ms
+
+
+
+SCRIPT real time probability:
+  open blaze
+  getpoint
+    save initial points quantity
+      timestamp of this
+    get last point hash
+  estimate
+    generate from last hash point 1,000 past points
+      do not use list.append(x) (item to end), but use list.insert(0, x) (item to begin, first)
+    save to dataframe the list of points, seeds and hmacs
+
+    put in new dataframe just points
+    CAUCULATE()
+      scroll through the entire list
+        get totals
+          quantity of items with points > 2.20
+            min quantity points > 2.20
+            max
+            mean
+            range
+          sum of points
+          mean of points
+          max point value
+          min point value (generally 0 or 1.00 expected)
+          
+      scroll through the list every item with range hundred
+        get these in columns from line 101 of dataframe
+          quantity of items with points > 2.20
+            min quantity points > 2.20
+            max
+            mean
+            range
+          sum of points
+          mean of points
+          max point value
+          min point value (generally 0 or 1.00 expected)
+
+        next point[100] after this round is > 2.20
+          conditions 2*2*2*3*3*3 = 216 combinations
+            first point[0] that get out in next round is > 2.20
+            last point[99] that get in in this round is > 2.20
+            quant items > 2.20
+              current (100) in % - total (10,000) in %
+                < -5% = 0
+                >= -5% & <= 5% = 1
+                > 5% = 2
+              mean % - total mean %
+                < -5% = 0
+                >= -5% & <= 5% = 1
+                > 5% = 2
+            mean current 100 points % - mean 10,000 total points %
+              < -5% = 0
+              >= -5% & <= 5% = 1
+              > 5% = 2
+        
+        get a list of combinations that next point[100] > 2.20
+          count ocurrencies
+            sort from greater n ocurrencies to less n ocurrencies
+
+        compare the last point hash combination with combinations list
+          return if next point will be > 2.20
+
+      turn back to blaze window
+      init listener
+        get points quantity again
+        get difference between len(initial quantity) and len(atual quantity)
+          if difference < 1:
+            keep listener
+
+          if difference > 1:
+            use difference to keep the firsts
+            take from the last to first:
+              insert into dataframe (new line)
+                CAUCULATE()
+                create a new column that register if the SCRIPT was a coorect prevision
+                  regiter correct or incorrect prevision to future count
+              show probability of next
+              keep listener
+          else:
+            take new item:
+              insert into dataframe (new line)
+                CAUCULATE()
+                  regiter correct or incorrect prevision to future count
+              show probability of next
+              keep listener
+
+
+
