@@ -80,17 +80,17 @@ DURAÇÃO DOS CRASHES DE ACORDO COM O FATOR:
 
 
 SCRIPT real time probability:
-  open blaze
-  getpoint
-    save initial points quantity
-      timestamp of this
-    get last point hash
+x  open blaze
+x  getpoint
+x    save initial points quantity
+x      timestamp of this
+x    get last point hash
   estimate
-    generate from last hash point 1,000 past points
-      do not use list.append(x) (item to end), but use list.insert(0, x) (item to begin, first)
-    save to dataframe the list of points, seeds and hmacs
+x    generate from last hash point 1,000 past points
+x      do not use list.append(x) (item to end), but use list.insert(0, x) (item to begin, first)
+x    save to dataframe the list of points, seeds and hmacs
 
-    put in new dataframe just points
+x    put in new dataframe just points
     CAUCULATE()
       scroll through the entire list
         get totals
@@ -109,7 +109,7 @@ SCRIPT real time probability:
           quantity of items with points > 2.20
             min quantity points > 2.20
             max
-            mean
+x            mean
             range
           sum of points
           mean of points
