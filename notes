@@ -92,15 +92,14 @@ x    save to dataframe the list of points, seeds and hmacs
 
 x    put in new dataframe just points
     CAUCULATE()
-      scroll through the entire list
-        get totals
-          quantity of items with points > 2.20
+x      scroll through the entire list
+x        get totals
+x          quantity of items with points > 2.20
             min quantity points > 2.20
             max
             mean
             range
-          sum of points
-          mean of points
+          sum of points / mean of points
           max point value
           min point value (generally 0 or 1.00 expected)
           
@@ -111,8 +110,7 @@ x    put in new dataframe just points
             max
 x            mean
             range
-          sum of points
-          mean of points
+          sum of points (mean of points)
           max point value
           min point value (generally 0 or 1.00 expected)
 

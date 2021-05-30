@@ -20,8 +20,9 @@ from selenium.webdriver.support import expected_conditions as EC #conditions for
 # 1 - Open blaze """
 
 def open_blaze():
-  driver = webdriver.Chrome()
-  driver.get("https://blaze.com/pt/games/crash")
+  driver = webdriver.Chrome('./chromedriver91')
+  driver.set_window_size(510,690)
+  driver.get("https://blaze.com/pt/games/crash")  
   return driver
 
 def current_crashes(driver):
@@ -192,12 +193,29 @@ class Analise():
     self.hash = get_last_point_hash(self.driver)
     print(f"the_hash of {get_last_crash_point(self.driver).text}: {self.hash}")
 
-    self.df = generate(seed=self.hash)
+    self.df = generate(amount=1999, seed=self.hash)
 
-    self.points = pd.DataFrame({"pt":self.df.points})
-    self.totals = 0
-    self.points['>2.20'] = np.where(self.points['pt'] > 2.20, 1, 0)
-    self.points['mean last 100'] = self.points['pt'].rolling(100).mean()
+    self.p = pd.DataFrame({"out":self.df.points.shift(periods=100), "in":self.df.points,})
+    
+    
+    # self.p['pt100mean'] = self.p['pt'].rolling(100).mean()
+    self.p['dif'] = self.p['in'] - self.p['out']
+    self.p['insum'] = self.p['in'].rolling(100).sum()
+    self.p['insuMin'] = self.p['insum'].rolling(100).min()
+    self.p['insuMax'] = self.p['insum'].rolling(100).max()
+    self.p['inprop'] = ( (self.p['insum'] - self.p['insuMin']) / (self.p['insuMax'] - self.p['insuMin']) )
+
+    self.p['good'] = np.where(self.p['in'] > 2.20, 1, 0)
+    self.p['good100sum'] = self.p['good'].rolling(100).sum()
+    # self.p['good100mean'] = self.p['good'].rolling(100).mean()
+    self.p['good100min'] = self.p['good100sum'].rolling(100).min()
+    self.p['good100max'] = self.p['good100sum'].rolling(100).max()
+
+    self.p = self.p[1000:].reset_index(drop=True)
+    # self.goods = len(self.p[self.p['pt'] > 2.20])
+
 
   def clos(self):
     self.driver.close()
+
+a=Analise()
